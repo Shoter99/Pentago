@@ -1,0 +1,64 @@
+.App {
+  text-align: center;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+.board{
+  display: grid;
+  width: 600px;
+  height: 600px;
+  border-radius: 15px;
+  background-color: #fff;
+  margin: 2rem;
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  place-items: center;
+  
+}
+.inBoard{
+  width: 280px;
+  height: 280px;
+  background-color: #a4161a;
+  border-radius: 25px;
+  display: grid;
+  place-items: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+.place{
+  width: 70px;
+  height: 70px;
+  margin: 0.5rem;
+  background-color: #6f1d1b;
+  border-radius: 50px;
+}
+.place:hover{
+  cursor: pointer;
+}
+.black{
+  background-color: #000;
+}
+
+.white{
+  background-color: #fff;
+}
+
+.empty{
+  background-color: #6f1d1b;
+}
+.restart{
+  transition: all 0.5s ease-in-out;
+}
+.restart:hover{
+  cursor: pointer;
+  color:#a4161a;
+  
+}
