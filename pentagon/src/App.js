@@ -15,7 +15,6 @@ function App() {
   const changeColor = (row, col) => {
     let newBoard = [...board]
     if (newBoard[row][col] === 'empty' && !winner ) {
-      console.log(row, col)
       newBoard[row][col] = turn
       setBoard(newBoard)
       setTurn(turn === 'white' ? 'black' : 'white')
@@ -101,7 +100,7 @@ const checkVerticalPosibility = (white, black, newBoard, f, s, t) => {
         white+=2
 
       }
-      else if(newBoard[i+f][j] == 'black' && newBoard[i+f][j+3] == 'black'){
+      else if(newBoard[i+f][j+t] == 'black' && newBoard[i+f][j+3+t] == 'black'){
         black+=2
 
       }
@@ -120,13 +119,13 @@ const checkVerticalPosibility = (white, black, newBoard, f, s, t) => {
     }
   }
 }}
-console.log(winner)
+
   
   return (
     <div className="App">
       <h1>Pentago</h1>
       
-      {winner ? <h2>Winner is {winner}</h2> : fullBoard ? <h2 className="restart"  onClick={() => ResetBoard()} >Restart</h2> :<h2>Now is <span style={{color:'#a4161a'}}>{turn} </span>turn</h2>}
+      {winner ? <><h2>Winner is {winner}</h2> <span className="restart"  onClick={() => ResetBoard()} >Restart</span> </> : fullBoard ? <h2 className="restart"  onClick={() => ResetBoard()} >Restart</h2> :<h2>Now is <span style={{color:'#a4161a'}}>{turn} </span>turn</h2>}
       <div className="board">
         {board.map((row, index) => {
           return (
