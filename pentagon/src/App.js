@@ -12,14 +12,19 @@ function App() {
   const [turn, setTurn] = useState('white')
   const [winner, setWinner] = useState('')
   const [fullBoard, setFullBoard] = useState(false)
+  const [choice, setChoice] = useState(0)
+  const [boardToRotate, setBoardToRotate] = useState(0)
+  const [boardToRotateSet, setBoardToRotateSet] = useState(false)
   const changeColor = (row, col) => {
     let newBoard = [...board]
     if (newBoard[row][col] === 'empty' && !winner ) {
       newBoard[row][col] = turn
       setBoard(newBoard)
       setTurn(turn === 'white' ? 'black' : 'white')
-      checkForWinner()
       checkForFullBoard()
+      RotateTurn(newBoard)
+      
+      checkForWinner()
     }
     
   }
@@ -57,6 +62,7 @@ function App() {
     checkHorizontalPosibility(white,black,newBoard, 0, 1)
     checkVerticalPosibility(white,black,newBoard, 2, 0, 0)
     checkVerticalPosibility(white,black,newBoard, 0, 2, 3)
+    checkDiagonally(newBoard)
     }
 const checkHorizontalPosibility = (white, black, newBoard, f, s) => {
   for (let i = 0; i < 4; i+=2) {
@@ -119,6 +125,56 @@ const checkVerticalPosibility = (white, black, newBoard, f, s, t) => {
     }
   }
 }}
+const checkDiagonally = (newBoard) => {
+  const checkConditionForColor = color =>{
+    if (newBoard[0][1] == color && newBoard[0][5] == color && newBoard[1][6] == color && newBoard[3][1] == color && newBoard[3][5] == color)
+    setWinner(color)
+    else if (newBoard[0][0] == color && newBoard[0][4] == color && newBoard[0][8] == color && newBoard[3][0] == color && newBoard[3][4] == color)
+    setWinner(color)
+    else if (newBoard[0][4] == color && newBoard[0][8] == color && newBoard[3][0] == color && newBoard[3][4] == color && newBoard[3][8] == color )
+    setWinner(color)
+    else if(newBoard[0][3] == color && newBoard[0][7] == color && newBoard[2][2] == color && newBoard[3][3] == color && newBoard[3][7] == color)
+    setWinner(color)
+  }
+  checkConditionForColor('white')
+  checkConditionForColor('black')
+}
+const RotateBoard = (newBoard, num) => {
+  let newBoard2 = []
+  newBoard2.push(newBoard[num][6], newBoard[num][3], newBoard[num][0], newBoard[num][7], newBoard[num][4], newBoard[num][1], newBoard[num][8], newBoard[num][5], newBoard[num][2])
+  newBoard[num] = newBoard2
+  setBoard(newBoard)
+}
+const RotateBoardRev = (newBoard, num) => {
+  let newBoard2 = []
+  newBoard2.push(newBoard[num][2], newBoard[num][5], newBoard[num][8], newBoard[num][1], newBoard[num][4], newBoard[num][7], newBoard[num][0], newBoard[num][3], newBoard[num][6])
+  newBoard[num] = newBoard2
+  setBoard(newBoard)
+}
+const RotateTurn = (newBoard) => {
+  
+  setBoardToRotate(window.prompt("Select board to rotate (1-4)"))
+  while(boardToRotate > 4 && boardToRotate < 0) setBoardToRotate(window.prompt("Select board to rotate (1-4)"))
+  setChoice(window.prompt("Which board to rotate\n 1 - clocwise\n 2 - counterclockwise"))
+  // while(choice >=1 && choice <= 2) setChoice(window.prompt("Which board to rotate\n 1 - clocwise\n 2 - counterclockwise"))
+
+  if (choice-1 === 0) {
+        // RotateBoard(newBoard, boardIndex)
+        // boardNr.classList.add('animRight')
+        
+        RotateBoard(newBoard, boardToRotate-1)
+      
+      
+  } 
+  else if (choice-1 === 1) {
+        // RotateBoardRev(newBoard, boardIndex)
+        // boardNr.classList.add('animLeft')
+        RotateBoardRev(newBoard, boardToRotate-1)
+        
+      
+  }
+
+}
 
   
   return (
@@ -129,7 +185,7 @@ const checkVerticalPosibility = (white, black, newBoard, f, s, t) => {
       <div className="board">
         {board.map((row, index) => {
           return (
-            <InBoard board={row} row={index} turn={turn} changeColor={changeColor} />
+            <InBoard  board={row} row={index} turn={turn} changeColor={changeColor} choice={choice} />
             )})}
 
         </div>

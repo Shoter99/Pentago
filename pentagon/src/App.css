@@ -1,3 +1,27 @@
+@keyframes rotate-right {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(90deg);
+  }
+
+
+}
+@keyframes rotate-left {
+  0% {
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(-90deg);
+  }
+  
+
+
+
+
+}
+
 .App {
   text-align: center;
   background-color: #282c34;
@@ -32,6 +56,14 @@
   place-items: center;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
+  transition: all 0.5s ease-in-out;
+}
+
+.animRight{
+  animation: rotate-right 1s linear ;
+}
+.animLeft{
+  animation: rotate-left 1s linear;
 }
 .place{
   width: 70px;
@@ -61,4 +93,10 @@
   cursor: pointer;
   color:#a4161a;
   
+}
+.choice:hover{
+  
+  cursor: pointer;
+  width: 290px;
+  height: 290px;
 }
