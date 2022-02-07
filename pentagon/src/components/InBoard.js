@@ -7,7 +7,7 @@ const InBoard = ({board, turn, row, changeColor, choice}) => {
             {/* {console.log('Row: '+row)} */}
             {board.map((place, index) => {
         return (
-            <Place changeColor={changeColor} color={place} row={row} col={index} turn={turn} />
+            <Place key={index} changeColor={changeColor} color={place} row={row} col={index} turn={turn} />
         )
     })}
         

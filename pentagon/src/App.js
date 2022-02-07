@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import InBoard from './components/InBoard';
 import {useState} from 'react';
+
 function App() {
   const [board, setBoard] = useState([
     ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
@@ -14,17 +15,38 @@ function App() {
   const [fullBoard, setFullBoard] = useState(false)
   const [choice, setChoice] = useState(0)
   const [boardToRotate, setBoardToRotate] = useState(0)
-  const [boardToRotateSet, setBoardToRotateSet] = useState(false)
-  const changeColor = (row, col) => {
+  // const [boardToRotateSet, setBoardToRotateSet] = useState(false)
+  const changeColor =  (row, col) => {
     let newBoard = [...board]
     if (newBoard[row][col] === 'empty' && !winner ) {
+      // RotateTurn(newBoard)
       newBoard[row][col] = turn
-      setBoard(newBoard)
-      setTurn(turn === 'white' ? 'black' : 'white')
+      // setBoard(newBoard)
       checkForFullBoard()
-      RotateTurn(newBoard)
-      
       checkForWinner()
+      //generate random num 1-4
+      // let randomNum = 1
+      let randomNum = Math.floor(Math.random() * 4)
+      //generate random number 0-1
+      let randomNum2 = Math.random()
+      // let randomNum2 = 1
+      let elem = document.getElementById(`boardnr_`+randomNum)
+
+      if (randomNum2 > 0.5) {
+        elem.classList.add('animRight')
+        setTimeout(() => {
+          elem.classList.remove('animRight')
+          RotateBoard(newBoard, randomNum)
+      }, 950)
+      }
+      else {
+        elem.classList.add('animLeft')
+        setTimeout(() =>{
+          elem.classList.remove('animLeft')
+          RotateBoardRev(newBoard, randomNum)
+        }, 950)
+      }
+      setTurn(turn === 'white' ? 'black' : 'white')
     }
     
   }
@@ -69,10 +91,10 @@ const checkHorizontalPosibility = (white, black, newBoard, f, s) => {
     for (let j = 0; j < 3; j++) {
       white = 0
       black = 0
-      if(newBoard[i+f][s+j*3] == 'white' && newBoard[i+f][1+s+j*3] == 'white') {
+      if(newBoard[i+f][s+j*3] === 'white' && newBoard[i+f][1+s+j*3] === 'white') {
         white+=2
       }
-      else if(newBoard[i+f][s+j*3] == 'black' && newBoard[i+f][1+s+j*3] == 'black')
+      else if(newBoard[i+f][s+j*3] === 'black' && newBoard[i+f][1+s+j*3] === 'black')
       {
         black+=2
       }
@@ -80,15 +102,15 @@ const checkHorizontalPosibility = (white, black, newBoard, f, s) => {
 
       for (let k = 0; k < 3; k++) {
         
-        if (newBoard[i+s][k+j*3] == 'white') white++
-        if (newBoard[i+s][k+j*3] == 'black') black++
+        if (newBoard[i+s][k+j*3] === 'white') white++
+        if (newBoard[i+s][k+j*3] === 'black') black++
         
 
       }
-      if(white == 5) {
+      if(white === 5) {
         setWinner('white')
         break}
-      if(black == 5){
+      if(black === 5){
         setWinner('black')
         break
       
@@ -102,23 +124,23 @@ const checkVerticalPosibility = (white, black, newBoard, f, s, t) => {
     for (let j = 0; j < 3; j++){
       white = 0
       black = 0
-      if(newBoard[i+f][j+t] == 'white' && newBoard[i+f][j+3+t] == 'white'){
+      if(newBoard[i+f][j+t] === 'white' && newBoard[i+f][j+3+t] === 'white'){
         white+=2
 
       }
-      else if(newBoard[i+f][j+t] == 'black' && newBoard[i+f][j+3+t] == 'black'){
+      else if(newBoard[i+f][j+t] === 'black' && newBoard[i+f][j+3+t] === 'black'){
         black+=2
 
       }
       else continue
       for (let k = 0; k < 3; k++){
-        if(newBoard[i+s][j+3*k] == 'white') white++
-        if(newBoard[i+s][j+3*k] == 'black') black++
+        if(newBoard[i+s][j+3*k] === 'white') white++
+        if(newBoard[i+s][j+3*k] === 'black') black++
       }
-      if(white == 5) {
+      if(white === 5) {
         setWinner('white')
         break}
-      if(black == 5){
+      if(black === 5){
         setWinner('black')
         break
 
@@ -127,13 +149,21 @@ const checkVerticalPosibility = (white, black, newBoard, f, s, t) => {
 }}
 const checkDiagonally = (newBoard) => {
   const checkConditionForColor = color =>{
-    if (newBoard[0][1] == color && newBoard[0][5] == color && newBoard[1][6] == color && newBoard[3][1] == color && newBoard[3][5] == color)
+    if (newBoard[0][1] === color && newBoard[0][5] === color && newBoard[1][6] === color && newBoard[3][1] === color && newBoard[3][5] === color)
     setWinner(color)
-    else if (newBoard[0][0] == color && newBoard[0][4] == color && newBoard[0][8] == color && newBoard[3][0] == color && newBoard[3][4] == color)
+    else if (newBoard[0][0] === color && newBoard[0][4] === color && newBoard[0][8] === color && newBoard[3][0] === color && newBoard[3][4] === color)
     setWinner(color)
-    else if (newBoard[0][4] == color && newBoard[0][8] == color && newBoard[3][0] == color && newBoard[3][4] == color && newBoard[3][8] == color )
+    else if (newBoard[0][4] === color && newBoard[0][8] === color && newBoard[3][0] === color && newBoard[3][4] === color && newBoard[3][8] === color )
     setWinner(color)
-    else if(newBoard[0][3] == color && newBoard[0][7] == color && newBoard[2][2] == color && newBoard[3][3] == color && newBoard[3][7] == color)
+    else if(newBoard[0][3] === color && newBoard[0][7] === color && newBoard[2][2] === color && newBoard[3][3] === color && newBoard[3][7] === color)
+    setWinner(color)
+    else if (newBoard[1][2] === color && newBoard[1][4] === color && newBoard[1][6] === color && newBoard[2][2] === color && newBoard[2][4] === color)
+    setWinner(color)
+    else if (newBoard[1][4] === color && newBoard[1][6] === color && newBoard[2][2] === color && newBoard[2][4] === color && newBoard[2][6] === color)
+    setWinner(color)
+    else if (newBoard[1][1] === color && newBoard[1][3] === color && newBoard[0][8] === color && newBoard[2][1] === color && newBoard[2][3] === color )
+    setWinner(color)
+    else if(newBoard[1][5] === color && newBoard[1][7] === color && newBoard[3][0] === color && newBoard[2][5] === color && newBoard[2][7] === color)
     setWinner(color)
   }
   checkConditionForColor('white')
@@ -176,7 +206,7 @@ const RotateTurn = (newBoard) => {
 
 }
 
-  
+
   return (
     <div className="App">
       <h1>Pentago</h1>
@@ -185,7 +215,7 @@ const RotateTurn = (newBoard) => {
       <div className="board">
         {board.map((row, index) => {
           return (
-            <InBoard  board={row} row={index} turn={turn} changeColor={changeColor} choice={choice} />
+            <InBoard key={index}  board={row} row={index} turn={turn} changeColor={changeColor} choice={choice} />
             )})}
 
         </div>
