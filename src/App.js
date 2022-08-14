@@ -15,6 +15,7 @@ function App() {
   const [fullBoard, setFullBoard] = useState(false)
   const [choice, setChoice] = useState(0)
   const [boardToRotate, setBoardToRotate] = useState(0)
+  const [infoPanelVisible, setInfoPanelVisible] = useState(false)
   // const [boardToRotateSet, setBoardToRotateSet] = useState(false)
   const changeColor =  (row, col) => {
     let newBoard = [...board]
@@ -23,7 +24,6 @@ function App() {
       newBoard[row][col] = turn
       // setBoard(newBoard)
       checkForFullBoard()
-      checkForWinner()
       //generate random num 1-4
       // let randomNum = 1
       let randomNum = Math.floor(Math.random() * 4)
@@ -108,10 +108,10 @@ const checkHorizontalPosibility = (white, black, newBoard, f, s) => {
 
       }
       if(white === 5) {
-        setWinner('white')
+        setWinner(()=> 'white')
         break}
       if(black === 5){
-        setWinner('black')
+        setWinner(() => 'black')
         break
       
       
@@ -170,16 +170,20 @@ const checkDiagonally = (newBoard) => {
   checkConditionForColor('black')
 }
 const RotateBoard = (newBoard, num) => {
+  if(winner) return
   let newBoard2 = []
   newBoard2.push(newBoard[num][6], newBoard[num][3], newBoard[num][0], newBoard[num][7], newBoard[num][4], newBoard[num][1], newBoard[num][8], newBoard[num][5], newBoard[num][2])
   newBoard[num] = newBoard2
   setBoard(newBoard)
+  checkForWinner()
 }
 const RotateBoardRev = (newBoard, num) => {
+  if(winner) return
   let newBoard2 = []
   newBoard2.push(newBoard[num][2], newBoard[num][5], newBoard[num][8], newBoard[num][1], newBoard[num][4], newBoard[num][7], newBoard[num][0], newBoard[num][3], newBoard[num][6])
   newBoard[num] = newBoard2
   setBoard(newBoard)
+  checkForWinner()
 }
 const RotateTurn = (newBoard) => {
   
@@ -209,9 +213,21 @@ const RotateTurn = (newBoard) => {
 
   return (
     <div className="App">
-      <h1>Pentago</h1>
-      
-      {winner ? <><h2>Winner is {winner}</h2> <span className="restart"  onClick={() => ResetBoard()} >Restart</span> </> : fullBoard ? <h2 className="restart"  onClick={() => ResetBoard()} >Restart</h2> :<h2>Now is <span style={{color:'#a4161a'}}>{turn} </span>turn</h2>}
+      <h1>Pentago
+        <button onClick={() => {setInfoPanelVisible(false)}} className="info-btn">ⓘ</button>
+      </h1>
+      {infoPanelVisible ? "" : 
+      (
+        <div className="info-panel"> 
+          <button onClick={() => {setInfoPanelVisible(true)}} className="close-panel">❌</button>
+          <h3>Tutorial</h3>
+          <p>Goal of the game:</p>
+          <p>- Place 5 balls vertically, horizontally or diagonally to win.</p>
+          <p>- Each round, one of the four smaller boards rotates randomly.</p>
+        </div>
+      )
+      }
+      {winner ? <><h2>Winner is {winner}</h2> <span className="restart"  onClick={() => ResetBoard()} >Restart</span> </> : fullBoard ? <h2 className="restart"  onClick={() => ResetBoard()} >Restart</h2> :<h2>Now it's <span style={{color:'#a4161a'}}>{turn} </span>turn</h2>}
       <div className="board">
         {board.map((row, index) => {
           return (

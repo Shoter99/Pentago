@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Pentago/static/css/main.bfbe9dbc.css",
+    "main.js": "/Pentago/static/js/main.16589bed.js",
+    "static/js/377.0980c1c9.chunk.js": "/Pentago/static/js/377.0980c1c9.chunk.js",
+    "service-worker.js": "/Pentago/service-worker.js",
+    "index.html": "/Pentago/index.html",
+    "main.bfbe9dbc.css.map": "/Pentago/static/css/main.bfbe9dbc.css.map",
+    "main.16589bed.js.map": "/Pentago/static/js/main.16589bed.js.map",
+    "377.0980c1c9.chunk.js.map": "/Pentago/static/js/377.0980c1c9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bfbe9dbc.css",
+    "static/js/main.16589bed.js"
+  ]
+}

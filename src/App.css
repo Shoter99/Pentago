@@ -21,7 +21,41 @@
 
 
 }
-
+.info-btn{
+  font-size: .4em;
+  padding: .4rem;
+  position: absolute;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-weight: bold;
+}
+.info-btn:hover{
+  font-size: .5em;
+}
+.info-panel{
+  position: absolute;
+  background-color: rgb(41, 40, 43);
+  width: 30%;
+  min-height: 40%;
+  overflow: auto;
+  border: white 3px solid;
+  border-radius: 15px;
+  padding: 1.5rem;
+  
+}
+.info-panel p{
+  text-align: left;
+}
+.close-panel{
+  position: absolute;
+  right: 2rem;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  font-size: 2rem;
+}
 .App {
   text-align: center;
   background-color: #282c34;
