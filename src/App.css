@@ -69,21 +69,21 @@
 }
 .board{
   display: grid;
-  width: 600px;
-  height: 600px;
+  width: 300px;
+  height: 300px;
   border-radius: 15px;
   background-color: #fff;
   margin: 2rem;
-  grid-column-gap: 1rem;
-  grid-row-gap: 1rem;
+  grid-column-gap: 0.2rem;
+  grid-row-gap: 0.2rem;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   place-items: center;
   
 }
 .inBoard{
-  width: 280px;
-  height: 280px;
+  width: 140px;
+  height: 140px;
   background-color: #a4161a;
   border-radius: 25px;
   display: grid;
@@ -100,9 +100,9 @@
   animation: rotate-left 1s linear;
 }
 .place{
-  width: 70px;
-  height: 70px;
-  margin: 0.5rem;
+  width: 35px;
+  height: 35px;
+  margin: 0.2rem;
   background-color: #6f1d1b;
   border-radius: 50px;
 }
@@ -133,4 +133,18 @@
   cursor: pointer;
   width: 290px;
   height: 290px;
+}
+@media screen and (min-width: 1400px){
+  .board{
+    width: 600px;
+    height: 600px;
+  }
+  .inBoard{
+    width: 280px;
+    height: 280px;
+  }
+  .place{
+    width: 70px;
+    height: 70px;
+  }
 }
