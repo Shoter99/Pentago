@@ -37,7 +37,7 @@
 .info-panel{
   position: absolute;
   background-color: rgb(41, 40, 43);
-  width: 30%;
+  width: 80%;
   min-height: 40%;
   overflow: auto;
   border: white 3px solid;
@@ -146,5 +146,8 @@
   .place{
     width: 70px;
     height: 70px;
+  }
+  .info-panel{
+    width: 40%;
   }
 }
