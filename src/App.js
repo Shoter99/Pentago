@@ -76,7 +76,7 @@ function App() {
     setWinner('')
     setFullBoard(false)
   }
-  const checkForWinner = () => {
+  const checkForWinner = (board) => {
     var white = 0
     var black = 0
     let newBoard = [...board]
@@ -175,7 +175,7 @@ const RotateBoard = (newBoard, num) => {
   newBoard2.push(newBoard[num][6], newBoard[num][3], newBoard[num][0], newBoard[num][7], newBoard[num][4], newBoard[num][1], newBoard[num][8], newBoard[num][5], newBoard[num][2])
   newBoard[num] = newBoard2
   setBoard(newBoard)
-  checkForWinner()
+  checkForWinner(newBoard)
 }
 const RotateBoardRev = (newBoard, num) => {
   if(winner) return
@@ -183,7 +183,7 @@ const RotateBoardRev = (newBoard, num) => {
   newBoard2.push(newBoard[num][2], newBoard[num][5], newBoard[num][8], newBoard[num][1], newBoard[num][4], newBoard[num][7], newBoard[num][0], newBoard[num][3], newBoard[num][6])
   newBoard[num] = newBoard2
   setBoard(newBoard)
-  checkForWinner()
+  checkForWinner(newBoard)
 }
 const RotateTurn = (newBoard) => {
   
