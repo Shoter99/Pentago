@@ -2,26 +2,30 @@
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(90deg);
   }
 
 
 }
+
 @keyframes rotate-left {
   0% {
     transform: rotate(0deg);
   }
-  100%{
+
+  100% {
     transform: rotate(-90deg);
   }
-  
+
 
 
 
 
 }
-.info-btn{
+
+.info-btn {
   font-size: .4em;
   padding: .4rem;
   position: absolute;
@@ -31,10 +35,12 @@
   color: white;
   font-weight: bold;
 }
-.info-btn:hover{
+
+.info-btn:hover {
   font-size: .5em;
 }
-.info-panel{
+
+.info-panel {
   position: absolute;
   background-color: rgb(41, 40, 43);
   width: 80%;
@@ -43,12 +49,14 @@
   border: white 3px solid;
   border-radius: 15px;
   padding: 1.5rem;
-  
+
 }
-.info-panel p{
+
+.info-panel p {
   text-align: left;
 }
-.close-panel{
+
+.close-panel {
   position: absolute;
   right: 2rem;
   cursor: pointer;
@@ -56,6 +64,7 @@
   background-color: transparent;
   font-size: 2rem;
 }
+
 .App {
   text-align: center;
   background-color: #282c34;
@@ -67,7 +76,8 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-.board{
+
+.board {
   display: grid;
   width: 300px;
   height: 300px;
@@ -79,9 +89,10 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   place-items: center;
-  
+
 }
-.inBoard{
+
+.inBoard {
   width: 140px;
   height: 140px;
   background-color: #a4161a;
@@ -91,63 +102,79 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   transition: all 0.5s ease-in-out;
+  opacity: 0.9;
 }
 
-.animRight{
-  animation: rotate-right 1s linear ;
+.inBoard:hover {
+  opacity: 1;
 }
-.animLeft{
-  animation: rotate-left 1s linear;
+
+.animRight {
+  animation: rotate-right 1.1s linear;
 }
-.place{
+
+.animLeft {
+  animation: rotate-left 1.1s linear;
+}
+
+.place {
   width: 35px;
   height: 35px;
   margin: 0.2rem;
   background-color: #6f1d1b;
   border-radius: 50px;
 }
-.place:hover{
+
+.place:hover {
   cursor: pointer;
 }
-.black{
+
+.black {
   background-color: #000;
 }
 
-.white{
+.white {
   background-color: #fff;
 }
 
-.empty{
+.empty {
   background-color: #6f1d1b;
 }
-.restart{
+
+.restart {
   transition: all 0.5s ease-in-out;
 }
-.restart:hover{
+
+.restart:hover {
   cursor: pointer;
-  color:#a4161a;
-  
+  color: #a4161a;
+
 }
-.choice:hover{
-  
+
+.choice:hover {
+
   cursor: pointer;
   width: 290px;
   height: 290px;
 }
-@media screen and (min-width: 1400px){
-  .board{
+
+@media screen and (min-width: 1400px) {
+  .board {
     width: 600px;
     height: 600px;
   }
-  .inBoard{
+
+  .inBoard {
     width: 280px;
     height: 280px;
   }
-  .place{
+
+  .place {
     width: 70px;
     height: 70px;
   }
-  .info-panel{
+
+  .info-panel {
     width: 40%;
   }
 }
