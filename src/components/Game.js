@@ -5,12 +5,15 @@ import InBoard from './InBoard';
 
 const Game = () => {
 
-    const [board, setBoard] = useState([
+    const emptyBoard = [
         ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
         ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
         ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
         ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
-    ])
+    ]
+
+
+    const [board, setBoard] = useState(emptyBoard)
     const [turn, setTurn] = useState('white')
     const [winner, setWinner] = useState('')
     const [fullBoard, setFullBoard] = useState(false)
@@ -67,12 +70,7 @@ const Game = () => {
         }
     }
     const ResetBoard = () => {
-        setBoard([
-            ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
-            ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
-            ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
-            ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
-        ])
+        setBoard(emptyBoard)
         setTurn('white')
         setWinner('')
         setFullBoard(false)
