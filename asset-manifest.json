@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/Pentago/static/css/main.a8756ce7.css",
-    "main.js": "/Pentago/static/js/main.81b172a0.js",
+    "main.css": "/Pentago/static/css/main.af847f38.css",
+    "main.js": "/Pentago/static/js/main.7c5ce47f.js",
     "static/js/377.0980c1c9.chunk.js": "/Pentago/static/js/377.0980c1c9.chunk.js",
     "service-worker.js": "/Pentago/service-worker.js",
     "index.html": "/Pentago/index.html",
-    "main.a8756ce7.css.map": "/Pentago/static/css/main.a8756ce7.css.map",
-    "main.81b172a0.js.map": "/Pentago/static/js/main.81b172a0.js.map",
+    "main.af847f38.css.map": "/Pentago/static/css/main.af847f38.css.map",
+    "main.7c5ce47f.js.map": "/Pentago/static/js/main.7c5ce47f.js.map",
     "377.0980c1c9.chunk.js.map": "/Pentago/static/js/377.0980c1c9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a8756ce7.css",
-    "static/js/main.81b172a0.js"
+    "static/css/main.af847f38.css",
+    "static/js/main.7c5ce47f.js"
   ]
 }
