@@ -17,7 +17,9 @@ const Game = () => {
     const [turn, setTurn] = useState('white')
     const [winner, setWinner] = useState('')
     const [fullBoard, setFullBoard] = useState(false)
+    // eslint-disable-next-line
     const [choice, setChoice] = useState(0)
+    // eslint-disable-next-line
     const [boardToRotate, setBoardToRotate] = useState(0)
     const [infoPanelVisible, setInfoPanelVisible] = useState(false)
     // const [boardToRotateSet, setBoardToRotateSet] = useState(false)
